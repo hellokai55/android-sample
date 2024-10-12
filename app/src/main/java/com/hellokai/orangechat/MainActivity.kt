@@ -26,6 +26,7 @@ import com.hellokai.orangechat.threadscreen.ThreadScreen4
 import com.hellokai.orangechat.threadscreen.ThreadScreen5
 import com.hellokai.orangechat.threadscreen.ThreadScreen6
 import com.hellokai.orangechat.threadscreen.ThreadScreen7
+import com.hellokai.orangechat.threadscreen.ThreadScreen8
 import com.hellokai.orangechat.ui.theme.OrangeChatTheme
 
 class MainActivity : ComponentActivity() {
@@ -52,7 +53,8 @@ private val funcList = listOf(
     FunctionName("2个线程一个输出字母，一个输出数字", "thread4"),
     FunctionName("多线程顺序打印5", "thread5"),
     FunctionName("多线程交替打印6", "thread6"),
-    FunctionName("多线程H2O打印7", "thread7")
+    FunctionName("多线程H2O打印7", "thread7"),
+    FunctionName("哲学家进餐问题", "thread8")
 )
 
 val LocalNavController = staticCompositionLocalOf<NavController?> { null }
@@ -85,6 +87,9 @@ fun App(padding: PaddingValues) {
             }
             composable("thread7") {
                 ThreadScreen7()
+            }
+            composable("thread8") {
+                ThreadScreen8()
             }
         }
     }
