@@ -29,14 +29,14 @@ import java.security.MessageDigest
 class PatchPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         println("This is Patch Plugin")
-        val android = project.extensions.getByType(AppExtension::class.java)
-        var applicationVariant: BaseVariant? = null
-        android.applicationVariants.configureEach { variant ->
-            if (variant.name == "debug") {
-                applicationVariant = variant
-                println("hellokai applicationVariants configureEach")
-            }
-        }
+//        val android = project.extensions.getByType(AppExtension::class.java)
+//        var applicationVariant: BaseVariant? = null
+//        android.applicationVariants.configureEach { variant ->
+//            if (variant.name == "debug") {
+//                applicationVariant = variant
+//                println("hellokai applicationVariants configureEach")
+//            }
+//        }
         project.plugins.withId("com.android.application") {
             val androidComponents =
                 project.extensions.getByType(ApplicationAndroidComponentsExtension::class.java)
@@ -49,9 +49,9 @@ class PatchPlugin : Plugin<Project> {
                     )
                 }
 
-                taskProvider.configure {
-                    it.dependsOn(applicationVariant?.assembleProvider)
-                }
+//                taskProvider.configure {
+//                    it.dependsOn(applicationVariant?.assembleProvider)
+//                }
 
                 // Register modify classes task
                 variant.artifacts.forScope(ScopedArtifacts.Scope.PROJECT)
@@ -89,7 +89,7 @@ abstract class ModifyClassesTask : DefaultTask() {
 
     @TaskAction
     fun taskAction() {
-        val patchDir = project.layout.buildDirectory.dir("patch")
+        val patchDir = output
 
         // 确保目录存在
         if (!patchDir.get().asFile.exists()) {

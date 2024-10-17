@@ -10,7 +10,7 @@ java {
 }
 
 dependencies {
-    compileOnly(libs.android.gradlePlugin.api)
+    compileOnly(libs.android.gradlePlugin)
     implementation(gradleKotlinDsl())
 }
 

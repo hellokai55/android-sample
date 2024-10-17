@@ -12,14 +12,14 @@ object HotFixManager {
         if (!dexDir.exists()) {
             dexDir.mkdir()
         }
-        val targetFile = File(dexDir, "app-debug.apk")
+        val targetFile = File(dexDir, "classes.dex")
 
         if (targetFile.exists()) {
             targetFile.delete()
         }
 
         val assetManager = context.assets
-        assetManager.open("app-debug.apk").use { inputStream ->
+        assetManager.open("classes.dex").use { inputStream ->
             FileOutputStream(targetFile).use { outputStream ->
                 inputStream.copyTo(outputStream)
             }
