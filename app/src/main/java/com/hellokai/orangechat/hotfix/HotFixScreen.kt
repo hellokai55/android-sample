@@ -10,5 +10,5 @@ fun HotFixScreen() {
     LaunchedEffect(Unit) {
         Fix2.testCrash()
     }
-    Text("This is HotFixScreen")
+    Text("This is HotFixScreen: ${Fix2.testCrash()}")
 }

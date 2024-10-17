@@ -48,12 +48,6 @@ class PatchPlugin : Plugin<Project> {
                         project.layout.buildDirectory.dir("intermediates/$taskName")
                     )
                 }
-
-//                taskProvider.configure {
-//                    it.dependsOn(applicationVariant?.assembleProvider)
-//                }
-
-                // Register modify classes task
                 variant.artifacts.forScope(ScopedArtifacts.Scope.PROJECT)
                     .use(taskProvider)
                     .toGet(
@@ -140,15 +134,25 @@ abstract class ModifyClassesTask : DefaultTask() {
                     patchHash.asFile.appendText("${file.path}:$md5\n")
                     println("ModifyClassesTask path 2234-> ${file.path} equals ${existMap[file.path] == md5}")
 
-                    if (existMap[file.path] == md5) { //如果md5值相同，代表没修改过，不用处理
-                        return
+                    if (existMap[file.path] != md5) { //如果md5值相同，代表没修改过，不用处理
+                        // 如果MD5不同，则把文件写到patch目录，文件名应该是从file.path中截取com/hellokai/orangechat/xxx到最后作为文件名，让其文件名是com/hellokai/orangechat/这样的
+                        val relativePath = "com/hellokai/orangechat/" + file.path.substringAfter("com/hellokai/orangechat/")
+                        // 按照patch目录的相对路径创建文件，并最后把文件内容写入
+                        val patchFile = patchDir.get().file(relativePath)
+                        patchFile.asFile.parentFile.mkdirs()
+                        file.copyTo(patchFile.asFile)
+
+                        // 利用命令行提供的dx命令生成dex文件 /Users/pengkai/Library/Android/sdk/build-tools/30.0.2/dx --dex --output=classes.dex out
+                        val dx = "/Users/pengkai/Library/Android/sdk/build-tools/30.0.2/dx"
+                        val output = patchDir.get().file("classes.dex")
+                        ProcessBuilder(
+                            dx,
+                            "--dex",
+                            "--output=${output.asFile}",
+                            patchDir.get().asFile.absolutePath
+                        ).start()
+
                     }
-                    // 如果MD5不同，则把文件写到patch目录，文件名应该是从file.path中截取com/hellokai/orangechat/xxx到最后作为文件名，让其文件名是com/hellokai/orangechat/这样的
-                    val relativePath = "com/hellokai/orangechat/" + file.path.substringAfter("com/hellokai/orangechat/")
-                    // 按照patch目录的相对路径创建文件，并最后把文件内容写入
-                    val patchFile = patchDir.get().file(relativePath)
-                    patchFile.asFile.parentFile.mkdirs()
-                    file.copyTo(patchFile.asFile)
                 }
             }
         }
