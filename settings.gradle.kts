@@ -1,12 +1,6 @@
 pluginManagement {
+//    includeBuild("build-logic")
     repositories {
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
-            }
-        }
         maven {
             url = uri("https://maven.aliyun.com/nexus/content/groups/public/")
         }

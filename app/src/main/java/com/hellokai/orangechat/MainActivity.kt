@@ -19,6 +19,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.hellokai.orangechat.components.FunctionItem
+import com.hellokai.orangechat.hotfix.HotFixScreen
 import com.hellokai.orangechat.threadscreen.ThreadScreen
 import com.hellokai.orangechat.threadscreen.ThreadScreen2
 import com.hellokai.orangechat.threadscreen.ThreadScreen3
@@ -54,7 +55,8 @@ private val funcList = listOf(
     FunctionName("多线程顺序打印5", "thread5"),
     FunctionName("多线程交替打印6", "thread6"),
     FunctionName("多线程H2O打印7", "thread7"),
-    FunctionName("哲学家进餐问题", "thread8")
+    FunctionName("哲学家进餐问题", "thread8"),
+    FunctionName("HotFix", "hotfix")
 )
 
 val LocalNavController = staticCompositionLocalOf<NavController?> { null }
@@ -90,6 +92,9 @@ fun App(padding: PaddingValues) {
             }
             composable("thread8") {
                 ThreadScreen8()
+            }
+            composable("hotfix") {
+                HotFixScreen()
             }
         }
     }

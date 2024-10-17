@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("com.hellokai.orangechat")
+//    id("com.hellokai.hotpatch")
 }
 
 android {
