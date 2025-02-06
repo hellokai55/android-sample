@@ -191,7 +191,6 @@ class BarChart(context: Context, attrs: AttributeSet? = null): View(context, att
 
     private fun log(msg: String) {
         android.util.Log.i("barchart", msg)
-
     }
 
     inner class FlingRunnable(context: Context) : Runnable {
