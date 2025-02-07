@@ -22,6 +22,7 @@ import com.hellokai.orangechat.components.FunctionItem
 import com.hellokai.orangechat.customview.CustomView1Screen
 import com.hellokai.orangechat.customview.CustomView2Screen
 import com.hellokai.orangechat.customview.CustomView3Screen
+import com.hellokai.orangechat.customview.CustomView4Screen
 import com.hellokai.orangechat.hotfix.HotFixScreen
 import com.hellokai.orangechat.threadscreen.ThreadScreen
 import com.hellokai.orangechat.threadscreen.ThreadScreen2
@@ -63,6 +64,7 @@ private val funcList = listOf(
     FunctionName("自定义柱状图", "customView1"),
     FunctionName("自定义view-hencoder", "customView2"),
     FunctionName("自定义view-水波纹", "customView3"),
+    FunctionName("自定义viewgroup-流式布局", "customView4"),
 )
 
 val LocalNavController = staticCompositionLocalOf<NavController?> { null }
@@ -110,6 +112,9 @@ fun App(padding: PaddingValues) {
             }
             composable("customView3") {
                 CustomView3Screen()
+            }
+            composable("customView4") {
+                CustomView4Screen()
             }
         }
     }
