@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.hellokai.orangechat.components.HScrollLoadMoreView
+        android:id="@+id/viewgroup5"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.hellokai.orangechat.components.ShowMoreTextView
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:drawableLeft="@drawable/back_black"
+            android:paddingEnd="20dp"
+            android:textSize="13sp"
+            android:layout_height="wrap_content" />
+
+    </com.hellokai.orangechat.components.HScrollLoadMoreView>
+
+
+</LinearLayout>
