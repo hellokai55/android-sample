@@ -72,6 +72,7 @@ private val funcList = listOf(
     FunctionName("自定义viewgroup-类似竖直viewgroup滚动", "customView5"),
     FunctionName("自定义viewgroup-横滑加载更多", "customView6"),
     FunctionName("自定义viewgroup-viewdrag", "customView7"),
+    FunctionName("自定义viewgroup-slidingMenu", "customView8"),
 )
 
 val LocalNavController = staticCompositionLocalOf<NavController?> { null }
@@ -131,6 +132,9 @@ fun App(padding: PaddingValues) {
             }
             composable("customView7") {
                 CustomView7Screen()
+            }
+            composable("customView8") {
+                CustomView8Screen()
             }
         }
     }

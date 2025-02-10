@@ -35,7 +35,7 @@ fun CustomView8Screen() {
     ) {
         AndroidView(
             factory = { context: Context ->
-                val v = DragLayout(context)
+                val v = LayoutInflater.from(context).inflate(R.layout.sliding_menu_layout, null)
                 return@AndroidView v
             },
             modifier = Modifier.fillMaxSize()
