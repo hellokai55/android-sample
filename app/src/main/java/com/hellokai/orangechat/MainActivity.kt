@@ -14,11 +14,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.hellokai.orangechat.components.FunctionItem
+import com.hellokai.orangechat.customview.CustomView10Screen
 import com.hellokai.orangechat.customview.CustomView1Screen
 import com.hellokai.orangechat.customview.CustomView2Screen
 import com.hellokai.orangechat.customview.CustomView3Screen
@@ -27,6 +29,7 @@ import com.hellokai.orangechat.customview.CustomView5Screen
 import com.hellokai.orangechat.customview.CustomView6Screen
 import com.hellokai.orangechat.customview.CustomView7Screen
 import com.hellokai.orangechat.customview.CustomView8Screen
+import com.hellokai.orangechat.customview.CustomView9Screen
 import com.hellokai.orangechat.hotfix.HotFixScreen
 import com.hellokai.orangechat.threadscreen.ThreadScreen
 import com.hellokai.orangechat.threadscreen.ThreadScreen2
@@ -38,7 +41,7 @@ import com.hellokai.orangechat.threadscreen.ThreadScreen7
 import com.hellokai.orangechat.threadscreen.ThreadScreen8
 import com.hellokai.orangechat.ui.theme.OrangeChatTheme
 
-class MainActivity : ComponentActivity() {
+class MainActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +76,8 @@ private val funcList = listOf(
     FunctionName("自定义viewgroup-横滑加载更多", "customView6"),
     FunctionName("自定义viewgroup-viewdrag", "customView7"),
     FunctionName("自定义viewgroup-slidingMenu", "customView8"),
+    FunctionName("自定义viewgroup-nestedscrollparent2layout", "customView9"),
+    FunctionName("自定义layoutmanager-仿探探", "customView10"),
 )
 
 val LocalNavController = staticCompositionLocalOf<NavController?> { null }
@@ -135,6 +140,12 @@ fun App(padding: PaddingValues) {
             }
             composable("customView8") {
                 CustomView8Screen()
+            }
+            composable("customView9") {
+                CustomView9Screen()
+            }
+            composable("customView10") {
+                CustomView10Screen()
             }
         }
     }

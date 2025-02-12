@@ -2,4 +2,9 @@
 <resources>
 
     <style name="Theme.OrangeChat" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
 </resources>

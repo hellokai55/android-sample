@@ -9,6 +9,10 @@
 /.idea/assetWizardSettings.xml
 /.idea/misc.xml
 /.idea
+/.idea/compiler.xml
+/.idea/gradle.xml
+/.idea/misc.xml
+/.idea/Project_default.xml
 .DS_Store
 /build
 /buildSrc/build
